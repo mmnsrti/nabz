@@ -4,7 +4,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
-
+import { Form } from "@/components/ui/form";
+import CustomFormFields from "../ui/CustomFormFields";
 const formSchema = z.object({
   username: z.string().min(2, {
     message: "Username must be at least 2 characters.",
@@ -33,7 +34,23 @@ const PatientForm = () => {
           <h1 className="header">Patient</h1>
           <p className="text-dark-700">Schedule your fist appointment</p>
         </section>
-   
+        <CustomFormFields 
+          control={form.control}
+        //   name="username"
+        //   render={({ field }) => (
+        //     <div className="space-y-4">
+        //       <label htmlFor="username" className="text-dark-700">
+        //         Username
+        //       </label>
+        //       <input
+        //         id="username"
+        //         type="text"
+        //         className="input"
+        //         {...field}
+        //       />
+        //     </div>
+        //   )}
+        />
         <Button type="submit">Submit</Button>
       </form>
     </Form>
