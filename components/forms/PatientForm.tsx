@@ -12,6 +12,15 @@ const formSchema = z.object({
   }),
 });
 
+export enum FormFieldType {
+    INPUT = 'input'
+    ,CHECKBOX = 'checkbox'
+    ,SELECT = 'select'
+    ,TEXTAREA = 'textarea'
+    ,PHONE_INPUT = 'phoneInput'
+    ,DATE_PICKER = 'datePicker'
+    ,SKELETON = 'skeleton'
+}
 const PatientForm = () => {
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
@@ -27,6 +36,7 @@ const PatientForm = () => {
     // ✅ This will be type-safe and validated.
     console.log(values);
   }
+  
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 flex-1">
@@ -36,20 +46,12 @@ const PatientForm = () => {
         </section>
         <CustomFormFields 
           control={form.control}
-        //   name="username"
-        //   render={({ field }) => (
-        //     <div className="space-y-4">
-        //       <label htmlFor="username" className="text-dark-700">
-        //         Username
-        //       </label>
-        //       <input
-        //         id="username"
-        //         type="text"
-        //         className="input"
-        //         {...field}
-        //       />
-        //     </div>
-        //   )}
+          fieldType={FormFieldType.INPUT}
+          name="name"
+          label="Full Name"
+          placeholder="Enter your full name"
+          iconSrc="/assets/icons/user.svg"
+          iconAlt="user"
         />
         <Button type="submit">Submit</Button>
       </form>
