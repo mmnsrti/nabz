@@ -13,13 +13,13 @@ const formSchema = z.object({
 });
 
 export enum FormFieldType {
-    INPUT = 'input'
-    ,CHECKBOX = 'checkbox'
-    ,SELECT = 'select'
-    ,TEXTAREA = 'textarea'
-    ,PHONE_INPUT = 'phoneInput'
-    ,DATE_PICKER = 'datePicker'
-    ,SKELETON = 'skeleton'
+  INPUT = "input",
+  CHECKBOX = "checkbox",
+  SELECT = "select",
+  TEXTAREA = "textarea",
+  PHONE_INPUT = "phoneInput",
+  DATE_PICKER = "datePicker",
+  SKELETON = "skeleton",
 }
 const PatientForm = () => {
   // 1. Define your form.
@@ -36,7 +36,7 @@ const PatientForm = () => {
     // ✅ This will be type-safe and validated.
     console.log(values);
   }
-  
+
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 flex-1">
@@ -44,7 +44,7 @@ const PatientForm = () => {
           <h1 className="header">Patient</h1>
           <p className="text-dark-700">Schedule your fist appointment</p>
         </section>
-        <CustomFormFields 
+        <CustomFormFields
           control={form.control}
           fieldType={FormFieldType.INPUT}
           name="name"
@@ -52,7 +52,24 @@ const PatientForm = () => {
           placeholder="Enter your full name"
           iconSrc="/assets/icons/user.svg"
           iconAlt="user"
-          
+        />
+        <CustomFormFields
+          control={form.control}
+          fieldType={FormFieldType.INPUT}
+          name="email"
+          label="Email"
+          placeholder="example@gmail.com"
+          iconSrc="/assets/icons/email.svg"
+          iconAlt="email"
+        />
+        <CustomFormFields
+          control={form.control}
+          fieldType={FormFieldType.PHONE_INPUT}
+          name="phone"
+          label="Phone Number"
+          placeholder="+98912123465"
+          iconSrc="/assets/icons/phone.svg"
+          iconAlt="phone"
         />
         <Button type="submit">Submit</Button>
       </form>
