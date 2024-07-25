@@ -26,15 +26,30 @@ type CustomProps = {
   fieldType: FormFieldType;
 };
 const RenderField = ({ props, field }: { field: any; props: CustomProps }) => {
-  switch (props.fieldType) {
+  const { control, fieldType, name, label, iconSrc, iconAlt,placeholder,disabled } = props;
+
+  switch (fieldType) {
     case FormFieldType.INPUT:
       return (
         <div className="flex rounded-md border border-dark-500 bg-dark-400">
-          {props.iconSrc && (
+          {iconSrc && (
             <Image
-            
+              src={iconSrc}
+              alt={iconAlt || "icon"}
+              width={18}
+              height={18}
+              className="ml-3"
             />
           )}
+          <FormControl>
+            <Input
+              {...field}
+              id={field.name}
+              placeholder={placeholder}
+              disabled={disabled}
+              className="shad-input border-0"
+            />
+          </FormControl>
         </div>
       );
 
