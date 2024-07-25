@@ -12,12 +12,17 @@ import { Control } from "react-hook-form";
 import { FormFieldType } from "../forms/PatientForm";
 type CustomProps = {
   control: Control<any>;
-  fieldType: FormFieldType;
   name: string;
   label?: string;
-  placeholder: string;
-  iconSrc: string;
-  iconAlt: string;
+  placeholder?: string;
+  iconSrc?: string;
+  iconAlt?: string;
+  disabled?: boolean;
+  dateFormat?: string;
+  showTimeSelect?: boolean;
+  children?: React.ReactNode;
+  renderSkeleton?: (field: any) => React.ReactNode;
+  fieldType: FormFieldType;
 };
 const CustomFormFields = ({ control, fieldType, name, label }: CustomProps) => {
   return (
@@ -27,7 +32,7 @@ const CustomFormFields = ({ control, fieldType, name, label }: CustomProps) => {
       render={({ field }) => (
         <FormItem className="flex-1">
           {fieldType !== FormFieldType.CHECKBOX &&
-            label (
+            label && (
               <FormLabel className="sr-only" htmlFor={field.name}>
                 {label}
               </FormLabel>
