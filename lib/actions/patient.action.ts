@@ -1,12 +1,14 @@
-export const createUser = async (user :CreateUserParams) => {
-  fetch("XXXXXXXXXXXXXXXXXXXXXXXXXXX", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(user),
-  })
-    .then((res) => res.json())
-    .then((data) => console.log(data))
-    .catch((err) => console.log(err));
+import { Query } from "node-appwrite";
+import { users } from "../appWrite.config";
+
+export const createUser = async (user: CreateUserParams) => {
+  try {
+  } catch (error: any) {
+    if (error && error?.code === 409) {
+      const existingUser = await users.list([
+        Query.equal("email", [user.email]),
+      ]);
+      return existingUser?.users[0];
+    }
+  }
 };
