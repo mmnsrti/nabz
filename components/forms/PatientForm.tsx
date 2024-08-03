@@ -84,7 +84,7 @@ const PatientForm = () => {
           iconSrc="/assets/icons/phone.svg"
           iconAlt="phone"
         />
-        <SubmitButton isLoading={isLoading}>GEt Started</SubmitButton>
+        <SubmitButton isLoading={isLoading}>Get Started</SubmitButton>
       </form>
     </Form>
   );
