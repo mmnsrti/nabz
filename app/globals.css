@@ -348,3 +348,6 @@
 .PhoneInputInput::placeholder {
   color: #1a1d21;
 }
+.invert-colors {
+  filter: invert(1) grayscale(1) contrast(1);
+}
