@@ -14,6 +14,12 @@ export const metadata: Metadata = {
   title: "Nabz",
   description:
     "A healthcare management system / یک سیستم مدیریت بهداشت و درمان",
+    icons: {
+      icon: [
+        {
+          url: "/assets/logo-removebg-preview.png", // /public path
+          href: "/assets/logo-removebg-preview.png", // /public path
+        },]}
 };
 
 export default function RootLayout({
