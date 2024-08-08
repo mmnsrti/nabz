@@ -124,6 +124,18 @@ const RenderField = ({ props, field }: { field: any; props: CustomProps }) => {
             </Select>
           </FormControl>
         );
+        case FormFieldType.TEXTAREA:
+          return (
+            <FormControl>
+              <textarea
+                {...field}
+                id={field.name}
+                placeholder={placeholder}
+                disabled={disabled}
+                className="shad-textArea border-0"
+              />
+            </FormControl>
+          ); 
 
     default:
       break;
