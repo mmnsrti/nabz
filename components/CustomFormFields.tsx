@@ -15,6 +15,7 @@ import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { Select, SelectContent, SelectTrigger, SelectValue } from "./ui/select";
 
 type CustomProps = {
   control: Control<any>;
@@ -108,6 +109,21 @@ const RenderField = ({ props, field }: { field: any; props: CustomProps }) => {
       );
     case FormFieldType.SKELETON:
       return renderSkeleton && renderSkeleton(field);
+      case FormFieldType.SELECT:
+        return (
+          <FormControl>
+            <Select onValueChange={field.onChange} defaultValue={field.value}>
+              <FormControl>
+                <SelectTrigger className="shad-select-trigger">
+                  <SelectValue placeholder={props.placeholder} />
+                </SelectTrigger>
+              </FormControl>
+              <SelectContent className="shad-select-content">
+                {props.children}
+              </SelectContent>
+            </Select>
+          </FormControl>
+        );
 
     default:
       break;
@@ -121,12 +137,11 @@ const CustomFormFields = (props: CustomProps) => {
       name={name}
       render={({ field }) => (
         <FormItem className="flex-1">
-          {fieldType !== FormFieldType.CHECKBOX && label && (
-            <FormLabel className="sr-only" htmlFor={field.name}>
-              {label}
-            </FormLabel>
+          {props.fieldType !== FormFieldType.CHECKBOX && label && (
+            <FormLabel className="shad-input-label">{label}</FormLabel>
           )}
           <RenderField field={field} props={props} />
+
           <FormMessage className="shad-error" />
         </FormItem>
       )}
