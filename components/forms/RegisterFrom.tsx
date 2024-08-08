@@ -116,7 +116,29 @@ const RegisterFrom = ({ user }: { user: User }) => {
             )}
           />
         </div>
-        <div className="flex flex-col gap-5 xl:flex-row"></div>
+        {/* <section className="space-y-6">
+          <div className="mb-9 space-y-1">
+            <h2 className="sub-header">Medical Information</h2>
+          </div>
+        </section> */}
+        <div className="flex flex-col gap-5 xl:flex-row">
+          <CustomFormFields
+            control={form.control}
+            fieldType={FormFieldType.INPUT}
+            name="address"
+            label="Address"
+            placeholder="Enter your address"
+            iconAlt="location"
+          />
+          <CustomFormFields
+            control={form.control}
+            fieldType={FormFieldType.INPUT}
+            name="Occupation"
+            label="Occupation"
+            placeholder="Software Engineer"
+            iconAlt="location"
+          />
+        </div>
         <div className="flex flex-col gap-5 xl:flex-row"></div>
         <div className="flex flex-col gap-5 xl:flex-row"></div>{" "}
         <div className="flex flex-col gap-5 xl:flex-row"></div>{" "}
